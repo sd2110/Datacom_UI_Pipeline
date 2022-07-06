@@ -1,0 +1,5 @@
+parallel\Payments_StepDefinitions.class
+parallel\Payee_StepDefinitions.class
+parallel\TestRunner.class
+pages\paymentsPage.class
+pages\payeePage.class
