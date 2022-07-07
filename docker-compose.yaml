@@ -1,0 +1,59 @@
+version: "3"
+services:
+  HubService:
+    image: selenium/hub:3.141.59
+    container_name: seleniumHub
+    ports:
+      - "4440:4444"
+
+  ChromeService:
+    image: selenium/node-chrome-debug
+    container_name: chromeNode
+    ports:
+      - "4441:5900"
+    environment:
+        - HUB_HOST=seleniumHub
+        - HUB_PORT=4444
+        - NODE_MAX_INSTANCES=1
+        - NODE_MAX_SESSION=1
+    depends_on:
+      - HubService
+
+  FirefoxService:
+    image: selenium/node-firefox-debug
+    container_name: firefoxNode
+    ports:
+      - "4442:5900"
+    environment:
+        - HUB_HOST=seleniumHub
+        - HUB_PORT=4444
+        - NODE_MAX_INSTANCES=1
+        - NODE_MAX_SESSION=1
+    depends_on:
+        - HubService
+
+  EdgeService:
+    image: selenium/node-edge
+    container_name: edgeNode
+    ports:
+      - "4443:5900"
+    environment:
+        - HUB_HOST=seleniumHub
+        - HUB_PORT=4444
+        - NODE_MAX_INSTANCES=1
+        - NODE_MAX_SESSION=1
+    depends_on:
+        - HubService
+
+  OperaService:
+    image: selenium/node-opera-debug
+    container_name: operaNode
+    ports:
+      - "4444:5900"
+    environment:
+      - HUB_HOST=seleniumHub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=1
+      - NODE_MAX_SESSION=1
+    depends_on:
+      - HubService

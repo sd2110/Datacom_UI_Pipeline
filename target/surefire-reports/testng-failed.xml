@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [parallelGridTests]" parallel="classes">
+  <test thread-count="5" verbose="0" name="Bank(failed)" parallel="classes">
+    <classes>
+      <class name="parallel.TestRunner">
+        <methods>
+          <include name="runScenario" invocation-numbers="4 1 6 2 5 3 0"/>
+          <include name="tearDownClass"/>
+          <include name="setUpClass"/>
+        </methods>
+      </class> <!-- parallel.TestRunner -->
+    </classes>
+  </test> <!-- Bank(failed) -->
+</suite> <!-- Failed suite [parallelGridTests] -->
